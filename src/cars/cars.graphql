@@ -1,0 +1,6 @@
+type Car {
+    id: ID!,
+    license: String!,
+    driver: Driver!,
+    model: String!
+}

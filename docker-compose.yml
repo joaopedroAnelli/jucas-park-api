@@ -1,0 +1,26 @@
+# jucas-park-api
+
+
+# compose syntax version.
+version: "3.6"
+
+# services declaration.
+services:
+  # PostgreSQL
+  postgres:
+    image: postgres:11.2
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=jucas-park-api
+      - POSTGRES_PASSWORD=jucas-park-api
+      - POSTGRES_DB=jucas-park-api
+    ports:
+      - target: 5432
+        published: 5432
+
+# volumes declaration.
+volumes:
+  # postgres-data
+  postgres-data:
+    driver: local

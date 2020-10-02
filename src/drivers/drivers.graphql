@@ -1,0 +1,13 @@
+type Driver {
+    id: Int!,
+    name: String!
+}
+
+
+type Query {
+    driver: Driver
+}
+
+type Mutation {
+    storeDriver(name: String!): Driver
+}
