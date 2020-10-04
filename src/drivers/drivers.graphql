@@ -5,9 +5,14 @@ type Driver {
 
 
 type Query {
-    driver: Driver
+    drivers: [Driver]!
 }
 
 type Mutation {
-    storeDriver(name: String!): Driver
+    storeDriver(name: String!): Driver,
+    updateDriver(id: Int!, name: String!): Driver
+}
+
+type Subscription {
+    driverCreated: Driver!
 }

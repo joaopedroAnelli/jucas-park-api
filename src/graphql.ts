@@ -6,24 +6,27 @@
 
 /* tslint:disable */
 /* eslint-disable */
-export abstract class IQuery {
-    abstract cars(): Car[] | Promise<Car[]>;
-
-    abstract driver(): Driver | Promise<Driver>;
-}
-
-export class Car {
+export interface Car {
     id: string;
     license: string;
     driver: Driver;
     model: string;
 }
 
-export class Driver {
+export interface Driver {
     id: number;
     name: string;
 }
 
-export abstract class IMutation {
-    abstract storeDriver(name: string): Driver | Promise<Driver>;
+export interface IQuery {
+    drivers(): Driver[] | Promise<Driver[]>;
+}
+
+export interface IMutation {
+    storeDriver(name: string): Driver | Promise<Driver>;
+    updateDriver(id: number, name: string): Driver | Promise<Driver>;
+}
+
+export interface ISubscription {
+    driverCreated(): Driver | Promise<Driver>;
 }

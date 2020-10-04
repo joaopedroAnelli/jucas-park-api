@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { PubSub } from 'graphql-subscriptions';
 
 @Module({
   imports: [
@@ -8,9 +9,15 @@ import { join } from 'path';
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
-        outputAs: 'class',
       },
+      installSubscriptionHandlers: true
     }),
   ],
+  providers: [
+    {
+      provide: 'PUB_SUB',
+      useValue: new PubSub()
+    }
+  ]
 })
 export class GraphqlModule {}

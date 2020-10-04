@@ -19,6 +19,17 @@ services:
       - target: 5432
         published: 5432
 
+  neo4j:
+    image: neo4j
+    volumes:
+      - $HOME/neo4j/data:/data
+    ports:
+      - target: 7687
+        published: 7687
+      - target: 7474
+        published: 7474
+
+
 # volumes declaration.
 volumes:
   # postgres-data
